@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:body>
+    <div class="main">
+        <div>
+            <div>
+                <canvas class="block_section" id="canvas" width="350" height="350"></canvas>
+            </div>
+            <div class="block_section form">
+                <h:form id="form">
+                    X
+                    <h:selectOneRadio class="flex_auto" id ="x_input" value="#{resultRay.x}" required="true">
+                        <f:selectItem itemValue="-2" itemLabel="-2" />
+                        <f:selectItem itemValue="-1.5" itemLabel="-1.5" />
+                        <f:selectItem itemValue="-1" itemLabel="-1" />
+                        <f:selectItem itemValue="-0.5" itemLabel="-0.5" />
+                        <f:selectItem itemValue="0" itemLabel="0" />
+                        <f:selectItem itemValue="0.5" itemLabel="0.5" />
+                    </h:selectOneRadio>
+                    Y
+                    <h:inputText id="y_input" class="label_form" value="#{resultRay.y}">
+                        <f:validateDoubleRange minimum="-5" maximum="3"/>
+                    </h:inputText>
+                    R
+                    <br/>
+                    <p:spinner id="r_input" class="label_form" value="#{resultRay.r}" stepFactor="0.5" min="1" max="3"/>
+                    
+
+                    <div class="buttons">
+                        <h:commandButton id="submit_command" value="Submit" action="#{resultRay.addRay}">
+                            <f:ajax execute="@form" render="table" event="click" onevent="drawCircles" onerror="drawCircles" />
+                        </h:commandButton>
+                    </div>
+                </h:form>
+                <h:form id="hidden_form" style="display: none">
+                    <h:inputHidden id="hidden_x_input" value="#{resultRay.x}"/>
+                    <h:inputHidden id="hidden_y_input" value="#{resultRay.y}"/>
+                    <h:inputHidden id="hidden_r_input" value="#{resultRay.r}"/>
+                    <h:commandButton  id="hidden_submit_command" value="Submit" action="#{resultRay.addRay}">
+                        <f:ajax execute="@form" render="table" event="click" onevent="drawCircles" onerror="drawCircles"/>
+                    </h:commandButton>
+                </h:form>
+            </div>
+        </div>
+        <div class="block_section table_block">
+            <h:form>
+                <h:commandButton id="reset_command" value="Reset" actionListener="#{resultRayList.deleteAllRays}">
+                    <f:ajax execute="@all" render="table" event="click" onevent="drawCircles" onerror="drawCircles"/>
+                </h:commandButton>
+            </h:form>
+            <h:dataTable class="table" id="table" value = "#{resultRayList.resultRays}" var="ray">
+                <h:column>
+                    <f:facet name="header"> X </f:facet>
+                    <h:outputText value="#{ray.x}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Y </f:facet>
+                    <h:outputText value="#{ray.y}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> R </f:facet>
+                    <h:outputText value="#{ray.r}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Hit Result </f:facet>
+                    <h:outputText value="#{ray.hitResult}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Current Time </f:facet>
+                    <h:outputText value="#{ray.currentTime}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Execution Time </f:facet>
+                    <h:outputText value="#{ray.executionTime}"/>
+                </h:column>
+            </h:dataTable>
+        </div>
+    </div>
+
+</h:body>
+</html>

@@ -1,0 +1,112 @@
+.body {
+    margin: inherit;
+    background-color: #1B1C22;
+    color: #D4D0B9
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main {
+    display: flex;
+    justify-content: start;
+
+}
+
+.block_section {
+    background-color: #252938;
+    border: 2px solid #252938;
+    padding: 5px;
+    margin: 20px;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px #030719;
+}
+
+.table_block {
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+}
+
+.flex_auto {
+    flex: auto;
+}
+
+.select {
+    padding: 5px;
+}
+
+.inline_block {
+    display:inline-block
+}
+
+.inline {
+    display: inline;
+}
+
+.label_form {
+    display: block;
+    margin: 5px;
+}
+
+.block {
+    display: block;
+}
+
+.hundred_width {
+    width: 100%;
+}
+
+.table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    height: 50px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+tr {
+    text-align: center;
+}
+
+td {
+    border-left: 1px solid #241404;
+    border-right: 1px solid #241404;
+}
+
+tr:nth-child(odd) {
+    background-color: #1B1C22;
+}
+
+th {
+    background-color: #1B1C22;
+    border: 1px solid #241404;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+tbody {
+    border: 2px solid #241404;
+}
+
+.error {
+    border-radius: 8px;
+    border: 1px solid #1B1C22;
+    background-color: #3F1600;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    text-align: center;
+}
